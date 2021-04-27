@@ -56,8 +56,10 @@ class TodoList:
 		write_json(self.data)
 	
 	# delete all todos
-	def deleteAll(self):
-		os.unlink('todo.json')
+	def deleteAll(
+			self,
+			filename:str='todo.json'):
+		os.unlink(filename)
 
 	# toggle status from not complete to complete
 	def toggleStatus(
@@ -70,10 +72,10 @@ class TodoList:
 					if item["id"] == id:	
 						if item["completion_status"] == "Not Complete":
 							item["completion_status"] = "Complete"
-							print(f'{item["description"]} is now marked as complete')
+							#print(f'{item["description"]} is now marked as complete')
 						else:
 							item["completion_status"] = "Not Complete"
-							print(f'{item["description"]} is now marked as not complete')
+							#print(f'{item["description"]} is now marked as not complete')
 			write_json(self.data)
 	
 	# update description of a todo
@@ -85,7 +87,7 @@ class TodoList:
 		#python object to append
 		for item in temp:
 			if item["id"] == todo_id:
-				print(f'TODO list item "{item["description"]}" has been updated to "{new_description}"')
+				#print(f'TODO list item "{item["description"]}" has been updated to "{new_description}"')
 				item["description"] = new_description
 		write_json(self.data)
 
@@ -99,7 +101,7 @@ class TodoList:
 				"id": str(uuid.uuid4())
 			}
 			temp.append(y)
-			print(f"Created TODO item(s): {name}")
+			#print(f"Created TODO item(s): {name}")
 		write_json(self.data)
 
 # Check location of todo.json exists
