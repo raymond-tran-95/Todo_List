@@ -216,7 +216,7 @@ def missingTodoFile(
 	if where_json(filename):
 		pass
 	else:
-		todo = {
+		todo: dict = {
 			"todo":[
 
 			]
